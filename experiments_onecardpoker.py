@@ -155,7 +155,7 @@ def Train(args):
                         'monitor_t': monitor_t, 
                         'net': net}
             fname = args.save_path + '%06d' % (i_epoch) + '.p'
-            pickle.dump(sto_dict, open( fname, 'wb'))
+            # pickle.dump(sto_dict, open( fname, 'wb'))
 
             # tracker.print_diff()
         val_monitor = {'payofftrend': vpayofftrend, 
