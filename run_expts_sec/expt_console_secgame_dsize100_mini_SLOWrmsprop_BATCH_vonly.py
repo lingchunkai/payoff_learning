@@ -1,7 +1,6 @@
 import logging
 logging.basicConfig(level=logging.INFO)
 from experiments_security_game import Train
-import matplotlib.pyplot as plt
 import numpy as np
 import os
 
