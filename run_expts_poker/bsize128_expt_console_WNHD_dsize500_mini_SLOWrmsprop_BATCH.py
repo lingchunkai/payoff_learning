@@ -5,7 +5,12 @@ import numpy as np
 import os
 
 import types
+
 args=types.SimpleNamespace()
+
+args.split_settings = 'const_val'
+args.val_size = 2000
+
 args.loss='logloss'
 args.datasize=500
 args.lr=0.002
@@ -20,7 +25,7 @@ args.dist_type='WNHD'
 save_path_template = './results/onecardpoker/WNHD_size500_SLOWrmsprop_bsize128/%d_%d/'
 args.initial_weights=[10.,0.25,0.25,0.25,0.25]
 
-args.momentum=0.9
+args.momentum=0.1
 args.optimizer='rmsprop'
 args.fixbets=10
 

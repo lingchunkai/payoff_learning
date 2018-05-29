@@ -7,11 +7,15 @@ import os
 
 import types
 args=types.SimpleNamespace()
+
+args.split_settings = 'const_val'
+args.val_size = 2000
+
 args.loss='vlogloss'
 args.datasize=200
 args.lr=0.005
-args.nEpochs=2000
-args.monitorFreq=220
+args.nEpochs=5000
+args.monitorFreq=5
 args.fracval=0.3
 args.batchsize=128
 args.tie_initial_raiseval=True
@@ -22,7 +26,7 @@ args.max_val=2.
 args.success_rates='0.5,0.5'
 args.static_rewards=1
 
-args.momentum=0.9
+args.momentum=0.1
 args.optimizer='rmsprop'
 args.fixbets=10
 

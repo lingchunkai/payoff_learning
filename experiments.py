@@ -9,7 +9,7 @@ from torch.autograd import Variable
 from torch.utils.data import Dataset, DataLoader
 
 class GameDataset(Dataset):
-    def __init__(self, loadpath, size=-1):
+    def __init__(self, loadpath, size=-1, offset=0):
         '''
         :param size size of dataset to read -1 if we use the full dataset
         '''
@@ -22,8 +22,15 @@ class GameDataset(Dataset):
         if 'D' in f: 
             self.others['D'] = f['D']
 
+        fullsize = self.feats.shape[0]
+
+        if offset < 0: offset += fullsize
+        self.offset = offset
+
         # By default, we use the full dataset
-        self.offset, self.size = 0, self.feats.shape[0] if size == -1 else size
+        self.size = fullsize - self.offset if size == -1 else size
+
+        assert self.size + self.offset -1 <= fullsize
 
         super(Dataset, self).__init__()
 
