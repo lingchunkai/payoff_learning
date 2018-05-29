@@ -30,8 +30,6 @@ nTests = 3
 nTrials = 5 # trials per test
 for i in range(nTests):
     for j in range(nTrials):
-        if i<2:continue
-        if i==2 and j<=1:continue
         save_folder = save_path_template % (i, j)
         if not os.path.exists(save_folder):
             os.makedirs(save_folder)
