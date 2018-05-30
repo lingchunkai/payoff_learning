@@ -9,20 +9,31 @@ import sys
 logger = logging.getLogger(__name__)
 
 def Train(args):
-    # load data
-    data = GameDataset(args.loadpath, size=args.datasize)
-    usize, vsize = data.GetGameDimensions()
-    nfeatures = data.GetFeatureDimensions()
-    train_data, test_data = data, data.Split(frac=args.fracval, random=False)
+    if not hasattr(args, 'split_settings') or args.split_settings == 'old':
+        # 70-30 split, old settings. Data size includes both 70+30
+        data = GameDataset(args.loadpath, size=args.datasize)
+        usize, vsize = data.GetGameDimensions()
+        nfeatures = data.GetFeatureDimensions()
 
-    train_dl = DataLoader(train_data, batch_size=args.batchsize, shuffle=True, num_workers=1)
-    test_dl = DataLoader(test_data, batch_size=test_data.__len__(), shuffle=False, num_workers=1)
+        train_data, test_data = data, data.Split(frac=args.fracval, random=False)
+        train_dl = DataLoader(train_data, batch_size=args.batchsize, shuffle=True, num_workers=1)
+        test_dl = DataLoader(test_data, batch_size=test_data.__len__(), shuffle=False, num_workers=1)
+    elif args.split_settings == 'const_val':
+        # Fixed holdout set. datasize 
+        train_data = GameDataset(args.loadpath, size=args.datasize)
+        usize, vsize = train_data.GetGameDimensions()
+        nfeatures = train_data.GetFeatureDimensions()
+
+        test_data = GameDataset(args.loadpath, offset=-args.val_size, size=args.val_size)
+
+        train_dl = DataLoader(train_data, batch_size=args.batchsize, shuffle=True, num_workers=1)
+        test_dl = DataLoader(test_data, batch_size=test_data.__len__(), shuffle=False, num_workers=1)
 
     # Setup net,  optimizers, and loss
     lr = args.lr
     
     net = RPSNet_weights(usize, 
-        data.GetFeatureDimensions(), 
+        test_data.GetFeatureDimensions(), 
         scale=args.scale,
         softmax=True if (hasattr(args, 'softmax') and args.softmax == True) else False)
 
@@ -105,8 +116,8 @@ def Train(args):
                             'vrewards_trend' : vrewards_trend}
             sto_dict = {'val_monitor': val_monitor,
                         'trainlosstrends': losstrend_total, 
-                        'monitor_t': monitor_t, 
-                        'net': net}
+                        'monitor_t': monitor_t}
+            #            'net': net}
             fname = args.save_path + '%06d' % (i_epoch) + '.p'
             pickle.dump(sto_dict, open( fname, 'wb'))
 

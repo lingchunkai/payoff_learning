@@ -6,11 +6,15 @@ import os
 
 import types
 args=types.SimpleNamespace()
+
+args.split_settings = 'const_val'
+args.val_size = 2000
+
 args.loss='logloss'
 args.datasize=1000
-args.lr=0.01
-args.nEpochs=1000
-args.monitorFreq=5
+args.lr=0.001
+args.nEpochs=2500
+args.monitorFreq=50
 args.fracval=0.3
 args.batchsize=128
 args.scale=10.0

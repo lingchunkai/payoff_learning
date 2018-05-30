@@ -16,7 +16,7 @@ do
 			--type RCP_weights \
 			--softmax 0\
 			--size 3 3 \
-			--nSamples 5000 \
+			--nSamples 10000 \
 			--nFeats 2 \
 			--scale 10.0 \
 			--seed $i \
