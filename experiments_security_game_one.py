@@ -121,10 +121,10 @@ def Train(args):
                             'vtarget_rewards': vtarget_rewards}
             sto_dict = {'val_monitor': val_monitor,
                         'trainlosstrends': losstrend_total, 
-                        'monitor_t': monitor_t, 
-                        'net': net}
+                        'monitor_t': monitor_t}
+            #            # 'net': net}
             fname = args.save_path + '%06d' % (i_epoch) + '.p'
-            # pickle.dump(sto_dict, open( fname, 'wb'))
+            pickle.dump(sto_dict, open( fname, 'wb'))
 
         val_monitor = {'payofftrend': vpayofftrend, 
                         'msetrend': vmsetrend,
