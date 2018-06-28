@@ -21,6 +21,7 @@ class RPSNet_weights(nn.Module):
         if self.softmax:
             self.softmax_layer = nn.Softmax()
         self.nfeatures = nfeatures
+        self.fc1.weight.data = torch.Tensor(np.zeros([3,2]))
     
 
     def forward(self, x):

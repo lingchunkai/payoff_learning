@@ -60,6 +60,8 @@ def Train(args):
 
     for i_epoch in range(args.nEpochs):
         t_lossu, t_lossv, t_loss = [], [], []
+        # Hacky way to print parameters
+        sys.stdout.write(str(net.fc1.weight.data))
         for i_batch, sample_batched in enumerate(train_dl):
             loss, lossu, lossv = Evaluate(net, sample_batched, args.loss, optimizer)
 
@@ -69,7 +71,7 @@ def Train(args):
             t_lossu.append(lossu.data.numpy())
             t_lossv.append(lossv.data.numpy())
             t_loss.append(loss.data.numpy())
-
+            
             sys.stdout.write('|')
             sys.stdout.flush()
         

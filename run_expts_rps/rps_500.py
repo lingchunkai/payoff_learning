@@ -12,9 +12,9 @@ args.val_size = 2000
 
 args.loss='logloss'
 args.datasize=500
-args.lr=0.001
-args.nEpochs=2500
-args.monitorFreq=50
+args.lr=0.0005
+args.nEpochs=10000
+args.monitorFreq=20
 args.fracval=0.3
 args.batchsize=128
 args.scale=10.0
