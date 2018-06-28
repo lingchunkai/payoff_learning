@@ -31,7 +31,7 @@ args.optimizer='rmsprop'
 args.fixbets=10
 
 nTests = 3
-nTrials = 5 # trials per test
+nTrials = 10 # trials per test
 for i in range(nTests):
     for j in range(nTrials):
         save_folder = save_path_template % (i, j)
