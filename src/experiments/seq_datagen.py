@@ -5,7 +5,6 @@ from itertools import *
 from ..core.game import ZeroSumSequenceGame 
 from ..core.solve import QRESeqLogit
 from .datagen import DataGen, dict_to_h5
-from ..core.seq_paynet import OneCardPokerWNHDComputeP, OneCardPokerComputeSets, OneCardPokerWNHDSeqSample
 
 class SeqDataGen(object):
     def __init__(self, Iu, Iv, Au, Av, simulator, seed=0):

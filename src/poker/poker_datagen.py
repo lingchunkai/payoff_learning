@@ -9,7 +9,7 @@ from ..core.solve import QRESeqLogit
 from ..experiments.datagen import DataGen, dict_to_h5
 from ..experiments.seq_datagen import SeqDataGen
 
-from ..core.seq_paynet import OneCardPokerWNHDComputeP, OneCardPokerComputeSets, OneCardPokerWNHDSeqSample
+from .poker import OneCardPokerWNHDComputeP, OneCardPokerComputeSets, OneCardPokerWNHDSeqSample
 
 class OneCardPokerWNHDGen(SeqDataGen):
     '''
