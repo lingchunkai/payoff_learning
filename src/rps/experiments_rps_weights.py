@@ -1,7 +1,7 @@
 import numpy as np
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-from ..core.paynet import RPSNet_weights
+from .rps import RPSNet_weights
 import pickle
 from ..experiments.experiments import GameDataset, Evaluate
 import logging
