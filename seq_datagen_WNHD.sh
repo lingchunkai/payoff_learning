@@ -12,7 +12,7 @@ do
 		fi
 		echo Generating dataset $i-$j
 		echo $fname
-		python seq_datagen.py \
+		python -m src.poker.poker_datagen \
 			--type OneCardPokerWNHD \
 			--nCards 4\
 			--initial_bet 10.0\

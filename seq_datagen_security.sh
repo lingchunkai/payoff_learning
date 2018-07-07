@@ -13,7 +13,7 @@ do
 		fi
 		echo Generating dataset $i-$j
 		echo $fname
-		python seq_datagen.py \
+		python -m src.sec.security_datagen \
 			--type SecurityGame \
 			--nDef 5\
 			--SecurityGameScale 2\

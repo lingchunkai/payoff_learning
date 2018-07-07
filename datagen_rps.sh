@@ -12,7 +12,7 @@ do
 		fi
 		echo Generating dataset $i-$j
 		echo $fname
-		python datagen.py \
+		python -m src.rps.rps_datagen \
 			--type RCP_weights \
 			--softmax 0\
 			--size 3 3 \
