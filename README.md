@@ -27,7 +27,6 @@ source activate paynet_env
 ## Generate dataset
 ```shell
 ./scripts/generate_data/datagen_rps.sh
-./scripts/generate_data/seq_datagen_scurity_one.sh
 ./scripts/generate_data/seq_datagen_security_one.sh
 ./scripts/generate_data/seq_datagen_security.sh
 ./scripts/generate_data/seq_datagen_WNHD.sh
